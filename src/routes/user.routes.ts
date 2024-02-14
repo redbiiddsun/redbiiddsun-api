@@ -1,5 +1,9 @@
-import { Router } from "express"
+import { Router } from "express";
+import { validateNewUser } from "../middleware/user.middleware";
+import { createUser } from "../controllers/user.controllers";
 
-const routers = Router()
+const routers = Router();
 
-routers.post('/', ()=>{})
+routers.post("/", validateNewUser, createUser);
+
+export default routers;
