@@ -11,10 +11,13 @@ export async function createUser(
     const userData = req.body;
 
     try {
-        const createUser = await prisma.user.create({ data: { ...userData } });
+        const createdUser = await prisma.user.create({ data: { ...userData } });
+
+        // return data Exclude password
+        let {['password']: _, ...returnData} = createdUser;
 
         res.status(201).json(
-            responseFormat(true, "create user successfully", createUser)
+            responseFormat(true, "create user successfully", returnData)
         );
     } catch (error) {
         if (
