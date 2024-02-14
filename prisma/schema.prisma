@@ -7,9 +7,20 @@ generator client {
     provider = "prisma-client-js"
 }
 
-// model User {
-//     user_id String @id @default(uuid())
-//     username String
-//     email   String @unique
-//     password String
-// }
+model User {
+    user_id    String    @id @default(uuid())
+    username   String
+    email      String    @unique
+    password   String
+    created_at DateTime  @default(now())
+    updated_at DateTime  @updatedAt
+    Session    Session[]
+}
+
+model Session {
+    session_id String   @id @default(uuid())
+    user_id    String
+    created_at DateTime @default(now())
+    updated_at DateTime @updatedAt
+    User       User     @relation(fields: [user_id], references: [user_id])
+}
