@@ -10,14 +10,13 @@ export async function createUser(
     res: Response,
     next: NextFunction
 ) {
-    const { username, email, password, first_name, last_name, role } = req.body;
+    const { email, password, first_name, last_name, role } = req.body;
 
     let securePassword = await hashPassword(password);
 
     try {
         const createdUser = await prisma.user.create({
             data: {
-                username,
                 email,
                 password: securePassword,
                 first_name,
