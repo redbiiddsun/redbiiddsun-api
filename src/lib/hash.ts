@@ -1,5 +1,4 @@
 import bcrypt from "bcrypt";
-import { promises } from "dns";
 
 export async function hashPassword(password: string): Promise<string> {
     const saltRounds = bcrypt.genSaltSync(10);
