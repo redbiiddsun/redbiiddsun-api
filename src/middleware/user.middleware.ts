@@ -8,7 +8,6 @@ export async function validateNewUser(
 ) {
     try {
 
-        if (!req.body.username) throw new Error("username are required");
         if (!req.body.email) throw new Error("email are required");
         if (!req.body.password) throw new Error("password are required");
         if (!req.body.first_name) throw new Error("first_name are required");
