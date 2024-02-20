@@ -1,12 +1,10 @@
-import express, {NextFunction, Request, Response } from "express";
-import "dotenv/config";
+import express from "express";
 import { handlerExpressParser } from "./lib/utils/error";
-
 
 // Route Import
 import apiStatus from "./routes/status.routes";
 import userRoutes from "./routes/user.routes";
-
+import authRoutes from "./routes/auth.routes"
 
 export const app = express();
 
