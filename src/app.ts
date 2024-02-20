@@ -17,6 +17,7 @@ app.use(handlerExpressParser);
 
 app.use("/api/status", apiStatus);
 app.use("/api/user", userRoutes);
+app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
     res.send("Welcome to Redbiiddsun API! 🚀");
