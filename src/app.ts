@@ -1,5 +1,4 @@
 import express, { NextFunction } from "express";
-import bodyParser from "body-parser";
 import bodyParserErrorHandler from "express-body-parser-error-handler";
 import "dotenv/config";
 
