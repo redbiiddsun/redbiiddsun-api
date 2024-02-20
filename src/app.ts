@@ -1,4 +1,4 @@
-import express from "express";
+import express, { NextFunction } from "express";
 import bodyParser from "body-parser";
 import bodyParserErrorHandler from "express-body-parser-error-handler";
 import "dotenv/config";
@@ -9,8 +9,10 @@ import userRoutes from "./routes/user.routes";
 export const app = express();
 
 // Config Middleware for parsing JSON request bodies
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.raw())
+
 
 // Error handling for invalid JSON body
 app.use(
