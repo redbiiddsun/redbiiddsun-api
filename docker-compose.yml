@@ -18,3 +18,10 @@ services:
       PMA_PASSWORD: root
     ports:
       - "8080:80"
+  # redbiiddsun-backend:
+  #   build:
+  #     context: .
+  #   environment:
+  #     NODE_ENV: production
+  #   ports:
+  #     - 5000:5000
