@@ -6,26 +6,46 @@ datasource db {
 generator client {
     provider = "prisma-client-js"
 }
+
 enum Role {
     ADMIN
     USER
 }
+
+enum CarType {
+    Sedan
+    Coupe
+    HatchBack
+    SUV
+    PPV
+    Crossover
+    MPV
+    Pickup
+    SportCar
+    Supercar
+    Truck
+}
+
 model User {
-    user_id    String    @id @default(uuid())
-    email      String    @unique
+    user_id    String   @id @default(uuid())
+    email      String   @unique
     password   String
     first_name String
     last_name  String
-    role       Role      @default(USER)
-    created_at DateTime  @default(now())
-    updated_at DateTime  @updatedAt
-    // Session    Session[]
+    role       Role     @default(USER)
+    created_at DateTime @default(now())
+    updated_at DateTime @updatedAt
 }
 
-// model Session {
-//     session_id String   @id @default(uuid())
-//     user_id    String
-//     created_at DateTime @default(now())
-//     updated_at DateTime @updatedAt
-//     User       User     @relation(fields: [user_id], references: [user_id])
-// }
+model vehicle {
+    vehicle_id           String   @id @default(uuid())
+    brand                String
+    model                String
+    registeration_date   DateTime
+    vehicle_registration String
+    vehicle_province     String
+    type                 CarType
+    miles                Int
+    created_at           DateTime @default(now())
+    updated_at           DateTime @updatedAt
+}
