@@ -44,7 +44,7 @@ model Vehicle {
     user_id             String
     brand              String
     model              String
-    registeration_date DateTime
+    registration_date DateTime
     vehicle_plate      String
     vehicle_province   String
     type               CarType
