@@ -35,17 +35,37 @@ model User {
     role       Role     @default(USER)
     created_at DateTime @default(now())
     updated_at DateTime @updatedAt
+
+    Vehicle Vehicle[]
 }
 
-model vehicle {
-    vehicle_id           String   @id @default(uuid())
-    brand                String
-    model                String
-    registeration_date   DateTime
-    vehicle_registration String
-    vehicle_province     String
-    type                 CarType
-    miles                Int
-    created_at           DateTime @default(now())
-    updated_at           DateTime @updatedAt
+model Vehicle {
+    vehicle_id         String   @id @default(uuid())
+    user_id             String
+    brand              String
+    model              String
+    registeration_date DateTime
+    vehicle_plate      String
+    vehicle_province   String
+    type               CarType
+    miles              Int
+    created_at         DateTime @default(now())
+    updated_at         DateTime @updatedAt
+
+    User       User     @relation(fields: [user_id], references: [user_id])
+    Service Service[]
+}
+
+model Service {
+    service_id String   @id @default(uuid())
+    name       String
+    detail     String
+    miles      String
+    vehicle_id String
+    date       DateTime @default(now())
+    place      String
+    created_at DateTime @default(now())
+    updated_at DateTime @updatedAt
+
+    Vehicle Vehicle @relation(fields: [vehicle_id], references: [vehicle_id])
 }
