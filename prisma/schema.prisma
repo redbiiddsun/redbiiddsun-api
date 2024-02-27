@@ -40,19 +40,20 @@ model User {
 }
 
 model Vehicle {
-    vehicle_id         String   @id @default(uuid())
-    user_id             String
-    brand              String
-    model              String
+    vehicle_id        String   @id @default(uuid())
+    user_id           String
+    brand             String
+    model             String?
+    color             String?
     registration_date DateTime
-    vehicle_plate      String
-    vehicle_province   String
-    type               CarType
-    miles              Int
-    created_at         DateTime @default(now())
-    updated_at         DateTime @updatedAt
+    vehicle_plate     String
+    vehicle_province  String
+    type              CarType
+    miles             Int
+    created_at        DateTime @default(now())
+    updated_at        DateTime @updatedAt
 
-    User       User     @relation(fields: [user_id], references: [user_id])
+    User    User      @relation(fields: [user_id], references: [user_id])
     Service Service[]
 }
 
