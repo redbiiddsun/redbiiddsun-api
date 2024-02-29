@@ -43,12 +43,12 @@ model Vehicle {
     vehicle_id        String   @id @default(uuid())
     user_id           String
     brand             String
-    model             String?
+    model             String
     color             String?
     registration_date DateTime
     vehicle_plate     String
     vehicle_province  String
-    type              CarType
+    type              CarType?
     miles             Int
     created_at        DateTime @default(now())
     updated_at        DateTime @updatedAt
