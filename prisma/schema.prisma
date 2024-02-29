@@ -45,7 +45,7 @@ model Vehicle {
     brand             String
     model             String
     color             String?
-    registration_date DateTime
+    registration_date DateTime?
     vehicle_plate     String
     vehicle_province  String
     type              CarType?
