@@ -4,7 +4,6 @@ import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import responseFormat from "../lib/responseFormat";
 import { hashPassword } from "../lib/hash";
 
-
 export async function createUser(
     req: Request,
     res: Response,
@@ -23,13 +22,16 @@ export async function createUser(
                 last_name,
                 role,
             },
+            select: {
+                user_id: true,
+                email: true,
+                first_name: true,
+                last_name: true,
+            },
         });
 
-        // return data Exclude password
-        let { ["password"]: _, ...returnData } = createdUser;
-
         res.status(201).json(
-            responseFormat(true, "create user successfully", returnData)
+            responseFormat(true, "create user successfully", createdUser)
         );
     } catch (error) {
         if (
@@ -40,6 +42,7 @@ export async function createUser(
                 responseFormat(false, "Email Already Exists", null)
             );
         } else {
+            console.log(error);
             res.status(500).json(responseFormat(false, "Internal Error", null));
         }
     }
